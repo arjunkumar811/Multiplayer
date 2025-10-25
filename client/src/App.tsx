@@ -32,7 +32,7 @@ function App() {
   const playbackRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:3000');
+    socketRef.current = io(import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000');
 
     socketRef.current.on('gridUpdate', (gridData: string[][]) => {
       setGrid(gridData);
